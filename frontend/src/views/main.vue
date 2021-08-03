@@ -133,8 +133,8 @@
 </template>
 
 <script>
-//import axios from "axios";
-import rest from "../js/httpCommon.js";
+import { mapGetters } from 'vuex'
+import rest from "../js/httpCommon.js"
 
 export default {
   name: "Main",
@@ -145,7 +145,7 @@ export default {
           title: "방송중",
           livetitle: "제목",
           text: "30만원",
-          src: "@/assets/live.png",
+          src: "",
           flex: 6,
         },
         {
@@ -198,16 +198,19 @@ export default {
       // carousel image
       items: [
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+          // src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+          // src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+          // src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
         },
       ],
     };
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated'])
   },
   methods: {
     // live 열기
@@ -215,7 +218,7 @@ export default {
       rest
         .axios({
           method: "post",
-          url: "/dabid/live/session/1/1",
+          url: "/dabid/session/3/test123",
         })
         .then((res) => {
           // console.log("켜짐");
@@ -236,7 +239,7 @@ export default {
       rest
       .axios({
         method: "post",
-        url: "/dabid/live/session/1/2",
+        url: "/dabid/session/3/test123",
       })
         .then((res) => {
           console.log(res);
@@ -267,12 +270,12 @@ export default {
   },
   // 페이지 열리자마자 live 정보들 가져오기
   created: function() {
-    this.getLive()
+    // this.getLive()
   },
 };
 </script>
 
-<style scope>
+<style scoped>
 @font-face {
   font-family: "InfinitySans-RegularA1";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff")

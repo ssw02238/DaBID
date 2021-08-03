@@ -1,7 +1,10 @@
 package com.ssafy.db.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -22,4 +25,5 @@ public class Auth {
     @OneToOne
     @JoinColumn(name = "user_id")
     private  User user;
+
 }
